@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QR Quiz</title>
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      max-width: 720px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 14px;
+      padding: 18px;
+    }
+    h1 { margin-top: 0; }
+    #question {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    #answer {
+      margin-top: 12px;
+      padding: 12px;
+      background: #f3f8ff;
+      border-radius: 10px;
+      display: none;
+    }
+    button {
+      margin-top: 14px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      background: #fafafa;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Quiz</h1>
+
+    <div id="question">Loading…</div>
+    <div id="answer"></div>
+
+    <button onclick="reveal()">Reveal answer</button>
+    <button onclick="nextQ()">Next question</button>
+  </div>
+
+<script>
+  let bank = [];
+  let pool = [];
+  let current = null;
+
+  async function load() {
+    const res = await fetch('questions.json');
+    bank = await res.json();
+    pool = [...bank];
+    shuffle(pool);
+    nextQ();
+  }
+
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+  }
+
+  function nextQ() {
+    document.getElementById('answer').style.display = 'none';
+
+    if (pool.length === 0) {
+      document.getElementById('question').textContent = 'No more questions';
+      return;
+    }
+
+    current = pool.pop();
+    document.getElementById('question').textContent = current.question;
+    document.getElementById('answer').textContent = current.answer;
+  }
+
+  function reveal() {
+    document.getElementById('answer').style.display = 'block';
+  }
+
+  load();
+</script>
+</body>
+</html>
