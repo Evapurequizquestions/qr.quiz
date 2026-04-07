@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -79,14 +78,13 @@
       align-items:center;
       gap: 12px;
       position: relative;
-      z-index: 1; /* above sparkles overlay */
+      z-index: 1;
       margin-bottom: 8px;
     }
 
     .modeTag{
       display:inline-flex;
       align-items:center;
-      gap: 8px;
       padding: 6px 10px;
       border-radius: 999px;
       border: 3px solid var(--black);
@@ -100,22 +98,20 @@
       user-select: none;
     }
 
-    /* ✅ EVAPURE PNG logo */
+    /* ✅ EVAPURE PNG logo (REAL FILE) */
     .evapureLogo{
-      height: 22px;      /* ✅ small logo - tweak 18–30px */
+      height: 22px;      /* small */
       width: auto;
       display: block;
       flex: 0 0 auto;
     }
 
-    /*
-      If your PNG is BLUE and you want it BLACK, you can TRY this:
-      (Results depend on how the PNG is made.)
-      Uncomment if needed:
+    /* If your PNG is blue and you *must* make it black (best is a black PNG):
+       Uncomment to try a CSS filter. Results depend on the artwork.
 
-      .evapureLogo{
-        filter: grayscale(1) brightness(0);
-      }
+    .evapureLogo{
+      filter: grayscale(1) brightness(0);
+    }
     */
 
     h1 {
@@ -223,16 +219,11 @@
 
 <body>
   <div class="card">
-
     <div class="topBar">
       <div class="modeTag">Quiz Mode</div>
 
-      <!-- ✅ Links to your file: evapure-logo.png (same folder as index.html) -->
-      <img class="evapureLogo"
-           src="./evapure-logo.png"
-           alt="EVAPURE logo"
-           loading="eager"
-           decoding="async">
+      <!-- ✅ THIS loads your actual PNG file -->
+      <img src="./evapure-logo.png" alt="EVAPURE" class="evapureLogo">
     </div>
 
     <h1>Quiz</h1>
