@@ -98,20 +98,16 @@
       user-select: none;
     }
 
-    /* ✅ EVAPURE PNG logo (REAL FILE) */
-.evapureLogo{
-  height: 42px;   /* ✅ good balance: visible but not dominant */
-  width: auto;
-  display: block;
-  flex: 0 0 auto;
-    }
-
-    /* If your PNG is blue and you *must* make it black (best is a black PNG):
-       Uncomment to try a CSS filter. Results depend on the artwork.
-
+    /* ✅ EVAPURE PNG logo (BIGGER DISPLAY SIZE) */
     .evapureLogo{
-      filter: grayscale(1) brightness(0);
+      height: 56px;         /* ✅ bigger (was 22px) - tweak 48–64px if you like */
+      width: auto;
+      display: block;
+      flex: 0 0 auto;
     }
+
+    /* If the larger logo feels too tight vertically, uncomment:
+    .topBar{ margin-bottom: 12px; }
     */
 
     h1 {
@@ -222,8 +218,8 @@
     <div class="topBar">
       <div class="modeTag">Quiz Mode</div>
 
-      <!-- ✅ THIS loads your actual PNG file -->
-      <img src="./evapure-logo.png" alt="EVAPURE" class="evapureLogo">
+      <!-- ✅ Uses your actual PNG file -->
+      <img class="evapureLogo" src="./evapure-logo.png" alt="EVAPURE">
     </div>
 
     <h1>Quiz</h1>
