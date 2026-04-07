@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -57,7 +58,7 @@
       overflow: hidden;
     }
 
-    /* subtle sparkle dots */
+    /* Subtle sparkles */
     .card::before{
       content:"";
       position:absolute; inset:-20px;
@@ -71,14 +72,14 @@
       mix-blend-mode: soft-light;
     }
 
-    /* Top bar for logo */
+    /* Header row: mode badge + logo */
     .topBar{
       display:flex;
       justify-content: space-between;
       align-items:center;
       gap: 12px;
       position: relative;
-      z-index: 1; /* above sparkle overlay */
+      z-index: 1; /* above sparkles overlay */
       margin-bottom: 8px;
     }
 
@@ -96,18 +97,26 @@
       letter-spacing: .3px;
       font-size: 12px;
       line-height: 1;
+      user-select: none;
     }
 
-    /* Small black EVAPURE logo (inline SVG) */
+    /* ✅ EVAPURE PNG logo */
     .evapureLogo{
-      height: 26px;  /* ✅ small - change 22–34px if needed */
+      height: 22px;      /* ✅ small logo - tweak 18–30px */
       width: auto;
-      display:block;
+      display: block;
       flex: 0 0 auto;
     }
-    .evapureLogo *{
-      fill: var(--black); /* ✅ black logo */
-    }
+
+    /*
+      If your PNG is BLUE and you want it BLACK, you can TRY this:
+      (Results depend on how the PNG is made.)
+      Uncomment if needed:
+
+      .evapureLogo{
+        filter: grayscale(1) brightness(0);
+      }
+    */
 
     h1 {
       font-family: var(--font-head);
@@ -196,7 +205,6 @@
     button:hover { filter: brightness(1.03); }
     button:active { transform: translateY(2px); }
 
-    /* Accessible focus */
     button:focus-visible{
       outline: 4px solid rgba(30,95,212,.35);
       outline-offset: 2px;
@@ -219,29 +227,12 @@
     <div class="topBar">
       <div class="modeTag">Quiz Mode</div>
 
-      <!-- Small black EVAPURE logo (no image file needed) -->
-      <svg class="evapureLogo" viewBox="0 0 210 42" aria-label="EVAPURE logo" role="img">
-        <!-- Droplet mark (simple) -->
-        <path d="M22 3
-                 C16 13, 10 18, 10 26
-                 C10 34, 16 39, 22 39
-                 C28 39, 34 34, 34 26
-                 C34 18, 28 13, 22 3Z"></path>
-        <!-- Inner cut to look like the box mark -->
-        <path d="M22 14
-                 C19 19, 17 21, 17 26
-                 C17 30, 19.7 33, 22 33
-                 C24.3 33, 27 30, 27 26
-                 C27 21, 25 19, 22 14Z"
-              fill="#ffffff" opacity="0.0"></path>
-
-        <!-- Wordmark -->
-        <text x="48" y="30"
-              font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
-              font-size="22"
-              font-weight="900"
-              letter-spacing="1.2">EVAPURE</text>
-      </svg>
+      <!-- ✅ Links to your file: evapure-logo.png (same folder as index.html) -->
+      <img class="evapureLogo"
+           src="./evapure-logo.png"
+           alt="EVAPURE logo"
+           loading="eager"
+           decoding="async">
     </div>
 
     <h1>Quiz</h1>
@@ -328,4 +319,3 @@
   </script>
 </body>
 </html>
-
